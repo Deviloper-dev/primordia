@@ -58,6 +58,8 @@ for (const seed of seeds) {
   for (const g of genOv) (species[g.si].baseGenome as unknown as Record<string, number>)[g.tr] = g.v;
   for (const [si, c] of countOv) species[si].initialCount = c;
   if (args.get('nohunt')) for (const si of args.get('nohunt')!.split(',').map(Number)) species[si].diet.eats = [];
+  // Diet override: --diet 3=1.2 (species 3 eats species 1 and 2; '.'-separated prey list)
+  for (const kv of (args.get('diet') ?? '').split(',').filter(Boolean)) { const [si, list] = kv.split('='); species[Number(si)].diet.eats = list ? list.split('.').map(Number) : []; }
   const ns = species.length;
   const sim = new Simulation({ seed, preset, worldSize: DEFAULT_WORLD_SIZE, species, params: { ...DEFAULT_PARAMS, ...overrides } });
   const t0 = Date.now();

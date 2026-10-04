@@ -5,7 +5,7 @@ Source of truth: [primordia-spec.md](./primordia-spec.md). Update as tasks land.
 ## 1. Foundation (main agent)
 - [x] Vite + TS scaffold, package.json, tsconfig (strict), vite.config (`base: './'`)
 - [x] Deploy: Cloudflare Git integration + `wrangler.jsonc` static assets (GitHub Pages unavailable: private repo on free plan; GH Actions workflow removed)
-- [ ] Push and confirm first Cloudflare deploy succeeds
+- [x] First Cloudflare deploy live at https://primordia.deviloper.dev/
 - [x] `src/config.ts` — all tunables + 4 presets
 - [x] `src/shared/types.ts`, `messages.ts`, `rng.ts` (contracts)
 
@@ -38,6 +38,8 @@ Source of truth: [primordia-spec.md](./primordia-spec.md). Update as tasks land.
 - [x] Other presets sanity: RPS stable; Duel → Teal loses to Ochre (competitive exclusion, by design)
 - [x] Four Kingdoms pass 1: Apex now eats Bulks + Stalkers; Hoppers slowed 6→4.5 (Stalkers couldn't catch them → Hopper boom → famine); Bulks fear 0.3→0; Stalkers/Apex slow-breeding + long-lived. Hoppers/Bulks/Stalkers now survive 10 min in 5/6 seeds.
 - [ ] Four Kingdoms: Apex still dies at 235–520 s (was ~90 s). Tried: slower/smaller Apex, more Apex, generalist Apex (worse — out-competes Stalkers). Likely needs larger Stalker population or accepting Apex as a transient.
+  - 2026-10-04 diagnosis: Apex itself is at replacement (births≈deaths, energy ~0.6) until Stalkers collapse; Stalkers barely break even (Hopper meal ≈25 energy ≈13 s of chase) and Apex predation tips them over → Hoppers boom → famine kills Bulks → Apex starves.
+  - Tried & failed: more Stalkers (worse — overshoot), Apex eats only Bulks, cheaper Stalkers/bigger Hoppers (fixes Stalkers, kills Bulks), 40-config random search (best 2/12 all-alive on held-out seeds; Apex dies 9–12/12). Needs a structural decision, not more tuning.
 - [ ] Real-GPU perf check at 5k agents (only headless SwiftShader measured)
 
 ## 6. Docs
