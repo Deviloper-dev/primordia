@@ -161,7 +161,7 @@ const fourKingdoms: SpeciesDef[] = [
     color: '#b5e48c',
     archetype: 'swarmer',
     diet: { plants: true, eats: [] },
-    baseGenome: makeGenome({ size: 0.7, speed: 6, sense: 6, aggression: 0, fear: 0.7, fertility: 0.5, lifespan: 60 }),
+    baseGenome: makeGenome({ size: 0.7, speed: 4.5, sense: 6, aggression: 0, fear: 0.7, fertility: 0.5, lifespan: 60 }),
     initialCount: 250,
   },
   {
@@ -169,7 +169,7 @@ const fourKingdoms: SpeciesDef[] = [
     color: '#9c6644',
     archetype: 'tank',
     diet: { plants: true, eats: [] },
-    baseGenome: makeGenome({ size: 1.7, speed: 2.5, sense: 5, aggression: 0.1, fear: 0.3, fertility: 0.7, lifespan: 150 }),
+    baseGenome: makeGenome({ size: 1.7, speed: 2.5, sense: 5, aggression: 0.1, fear: 0, fertility: 0.7, lifespan: 150 }),
     initialCount: 80,
   },
   {
@@ -177,15 +177,15 @@ const fourKingdoms: SpeciesDef[] = [
     color: '#f77f00',
     archetype: 'hunter',
     diet: { plants: false, eats: [0, 1] },
-    baseGenome: makeGenome({ size: 1.2, speed: 5.5, sense: 10, aggression: 0.7, fear: 0.4, fertility: 0.7, lifespan: 110 }),
+    baseGenome: makeGenome({ size: 1.2, speed: 5.5, sense: 10, aggression: 0.7, fear: 0.4, fertility: 0.85, lifespan: 180 }),
     initialCount: 30,
   },
   {
     name: 'Apex',
     color: '#7209b7',
     archetype: 'hunter',
-    diet: { plants: false, eats: [2] },
-    baseGenome: makeGenome({ size: 1.8, speed: 6, sense: 14, aggression: 0.8, fear: 0.1, fertility: 0.75, lifespan: 160 }),
+    diet: { plants: false, eats: [1, 2] },
+    baseGenome: makeGenome({ size: 1.8, speed: 6, sense: 14, aggression: 0.8, fear: 0.1, fertility: 0.85, lifespan: 180 }),
     initialCount: 8,
   },
 ];
