@@ -66,10 +66,13 @@ npm run tune        # Run headless tuning script for balancing
 
 ## Deploy
 
-Push to the `main` branch and GitHub Actions will deploy to GitHub Pages. In your repo Settings → Pages, ensure:
-- **Source:** GitHub Actions
+Pushing to `main` builds the app and deploys `dist/` to **Cloudflare Pages** (project `primordia`) via GitHub Actions (`.github/workflows/deploy.yml`). The first run creates the Pages project automatically.
 
-Vite is configured with `base: './'` so the app works under repo subpaths.
+One-time setup — add two repository secrets (Settings → Secrets and variables → Actions):
+- `CLOUDFLARE_API_TOKEN` — Cloudflare dashboard → My Profile → API Tokens → Create Token → custom token with **Account → Cloudflare Pages → Edit**.
+- `CLOUDFLARE_ACCOUNT_ID` — shown on the Cloudflare dashboard (Workers & Pages overview, right sidebar).
+
+The site is served at `https://primordia.pages.dev` (or `primordia-<suffix>.pages.dev` if the name is taken). Vite uses `base: './'`, so the build also works under any subpath.
 
 ## Project Structure
 
