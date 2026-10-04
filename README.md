@@ -66,13 +66,11 @@ npm run tune        # Run headless tuning script for balancing
 
 ## Deploy
 
-Pushing to `main` builds the app and deploys `dist/` to **Cloudflare Pages** (project `primordia`) via GitHub Actions (`.github/workflows/deploy.yml`). The first run creates the Pages project automatically.
+Deployed on **Cloudflare** via its Git integration (Workers & Pages → Create → Import a repository):
+- **Build command:** `npm run build`
+- **Deploy command:** `npx wrangler deploy` (default)
 
-One-time setup — add two repository secrets (Settings → Secrets and variables → Actions):
-- `CLOUDFLARE_API_TOKEN` — Cloudflare dashboard → My Profile → API Tokens → Create Token → custom token with **Account → Cloudflare Pages → Edit**.
-- `CLOUDFLARE_ACCOUNT_ID` — shown on the Cloudflare dashboard (Workers & Pages overview, right sidebar).
-
-The site is served at `https://primordia.pages.dev` (or `primordia-<suffix>.pages.dev` if the name is taken). Vite uses `base: './'`, so the build also works under any subpath.
+`wrangler.jsonc` tells wrangler to upload `dist/` as static assets, so no Worker code or Vite plugin is needed. Every push to `main` redeploys. Vite uses `base: './'`, so the build also works under any subpath.
 
 ## Project Structure
 
