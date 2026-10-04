@@ -51,12 +51,30 @@ export class Panel {
   private gui!: GUI;
   private closedState = new Map<string, boolean>();
   private folders = new Map<string, GUI>();
+  private hidden = window.innerWidth < UI.panelAutoHideWidth;
+  private toggleBtn: HTMLButtonElement;
 
   constructor(
     private state: AppState,
     private cb: PanelCallbacks,
   ) {
+    this.toggleBtn = document.createElement('button');
+    this.toggleBtn.className = 'panel-toggle';
+    this.toggleBtn.onclick = () => this.toggle();
+    document.body.appendChild(this.toggleBtn);
     this.build();
+  }
+
+  /** Show/hide the whole control panel (button or H key). Survives rebuilds. */
+  toggle() {
+    this.hidden = !this.hidden;
+    this.applyHidden();
+  }
+
+  private applyHidden() {
+    this.gui.show(!this.hidden);
+    this.toggleBtn.textContent = this.hidden ? '☰ Controls (H)' : '✕ Hide (H)';
+    this.toggleBtn.setAttribute('aria-expanded', String(!this.hidden));
   }
 
   /** Destroy and recreate everything (used when the species list changes). */
@@ -84,6 +102,7 @@ export class Panel {
     this.folders.clear();
     const { state: s, cb } = this;
     const gui = (this.gui = new GUI({ title: 'Primordia' }));
+    this.applyHidden();
 
     // --- Simulation ---
     const sim = this.folder(gui, 'sim', 'Simulation', false);

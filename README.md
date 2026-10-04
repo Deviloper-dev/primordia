@@ -18,7 +18,7 @@ Four configurations ship by default, each with different food webs and dynamics:
 
 - **Classic:** Three-level food chain. Grazers eat plants; Hunters chase Grazers; Omnivores eat plants and small Grazers (size-based).
 - **Rock–Paper–Scissors:** Three species that eat plants and form a cycle: Red hunts Blue, Blue hunts Green, Green hunts Red. Creates spatial waves.
-- **Four Kingdoms:** Herbivores (fast Hoppers + slow Bulks) form the base; Stalkers hunt both; Apex predators hunt Stalkers. Multi-level hierarchy.
+- **Four Kingdoms:** Herbivores (fast Hoppers + slow Bulks) form the base; Stalkers hunt both; the Apex hunts Stalkers and Bulks. Watch it as a story: the Apex arrives as an invader, dominates for a few minutes, then dies out once it has squeezed its prey base (typically 4–9 min) — after which the three-level web carries on. A four-level food chain on this little world can't feed a top predator for long.
 - **Duel:** Two herbivores (Ochre and Teal) compete purely for plants. Simplest setup; reveals plant dynamics and competition.
 
 ## Controls
@@ -35,6 +35,7 @@ Four configurations ship by default, each with different food webs and dynamics:
 | **Reset** | R |
 | **Follow selected** | F |
 | **Deselect** | Esc |
+| **Show/hide control panel** | H (or the button top-right; hidden by default on narrow screens) |
 
 **Panel sections:** Simulation (play/pause, speed, preset, seed); Species (diet, genomes); Environment (growth rates, water level); Evolution (mutation, costs); Brush (spawn tool); View (display options).
 

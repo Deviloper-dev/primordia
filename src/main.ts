@@ -266,6 +266,10 @@ window.addEventListener('keydown', (e) => {
     case 'F':
       setFollow(!following);
       break;
+    case 'h':
+    case 'H':
+      panel.toggle();
+      break;
     case 'Escape':
       deselect();
       break;

@@ -55,11 +55,12 @@ html, body {
 .card button.active { background: var(--accent); color: #0b1a0e; }
 
 /* lil-gui top-right */
-.lil-gui.root {
+/* lil-gui 0.21 classes; body prefix outranks its runtime-injected .lil-gui.lil-auto-place rule */
+body .lil-gui.lil-root {
   position: fixed;
-  top: 8px;
+  top: 40px; /* below the panel toggle button */
   right: 8px;
-  max-height: calc(100vh - 16px);
+  max-height: calc(100vh - 48px);
   overflow-y: auto;
   pointer-events: auto;
   --width: 270px;
@@ -123,3 +124,17 @@ html, body {
 .outcome-body { line-height: 1.5; }
 .outcome-detail { opacity: 0.8; margin-top: 4px; }
 .outcome-buttons { display: flex; gap: 8px; justify-content: center; margin-top: 14px; }
+
+/* Control panel show/hide toggle (top-right) */
+.panel-toggle {
+  position: fixed; top: 8px; right: 8px; z-index: 1002; /* above lil-gui (1001) */
+  padding: 5px 10px; font: 12px system-ui, sans-serif;
+  color: var(--fg, #e8ecf1); background: rgba(16, 20, 28, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 6px; cursor: pointer;
+}
+.panel-toggle:hover { background: rgba(40, 48, 64, 0.95); }
+
+@media (max-width: 700px) {
+  body .lil-gui.lil-root { --width: min(270px, calc(100vw - 16px)); }
+  .hud { top: 44px; } /* keep the HUD clear of the toggle button */
+}

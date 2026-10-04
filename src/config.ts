@@ -321,4 +321,5 @@ export const UI = {
   spawnRandomRadius: 30,
   hudUpdateMs: 250,
   chartMinSpanSeconds: 10,
+  panelAutoHideWidth: 700, // control panel starts hidden on screens narrower than this (px)
 };
